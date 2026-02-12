@@ -1,0 +1,9 @@
+exe/
+lib/
+.vscode/
+.xmake/
+build/
+
+*.obj
+*.lib
+*.dll

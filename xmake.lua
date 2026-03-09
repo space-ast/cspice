@@ -11,4 +11,11 @@ target("cspice")
     if is_plat("mingw") then 
         set_languages("c99")
         add_cflags("-Wno-implicit-int")
-    end 
+    end
+    -- add_rules("utils.symbols.export_all", {export_filter = function (symbol, opt)
+    --     if symbol:endswith("_") or symbol:endswith("_c") then
+    --         return true
+    --     end
+    -- end})
+    add_files("src/cspice/CSPICE.export.txt")
+    add_rules("utils.symbols.export_list")

@@ -7,8 +7,8 @@ Introduction
 ===========================================================================
  
    This document describes the structure and contents of the latest version
-   of the NAIF cspice Toolkit for PC computers using MICROSOFT WINDOWS
-   operating system and MICROSOFT VISUAL C++ 64BIT compiler.
+   of the NAIF cspice Toolkit for PC computers using LINUX operating system
+   and GCC 64BIT compiler.
  
    Most C compilers come with a large set of compilation options that can
    be used when compiling source code. The compiler options we (NAIF) used
@@ -19,14 +19,14 @@ Introduction
 Version Information
 --------------------------------------------------------
  
-      Creation Date: Sat Jan  1 19:02:53 PST 2022
+      Creation Date: Sat Jan  1 19:04:31 PST 2022
       Version      : CSPICE.............V.N0067
  
  
 Directory Structure and Contents
 ===========================================================================
  
-   The top level directory, cspice, contains the file makeall.bat. This is
+   The top level directory, cspice, contains the file makeall.csh. This is
    a script that builds all of the object libraries and executables in the
    cspice Toolkit.
  
@@ -34,7 +34,7 @@ Directory Structure and Contents
          |
          cspice
             |
-            makeall.bat
+            makeall.csh
  
    It may optionally contain a zero-size file named N????, e.g. N0067,
    indicating the generic SPICE Toolkit version on which this package is
@@ -183,27 +183,27 @@ EXE
             |
             exe
                |
-               brief.exe
-               chronos.exe
-               ckbrief.exe
-               commnt.exe
-               simple.exe
-               states.exe
-               subpt.exe
-               tictoc.exe
-               dskbrief.exe
-               dskexp.exe
-               frmdiff.exe
-               inspekt.exe
-               mkdsk.exe
-               mkspk.exe
-               msopck.exe
-               spacit.exe
-               spkdiff.exe
-               spkmerge.exe
-               tobin.exe
-               toxfr.exe
-               version.exe
+               brief
+               chronos
+               ckbrief
+               commnt
+               simple
+               states
+               subpt
+               tictoc
+               dskbrief
+               dskexp
+               frmdiff
+               inspekt
+               mkdsk
+               mkspk
+               msopck
+               spacit
+               spkdiff
+               spkmerge
+               tobin
+               toxfr
+               version
  
  
 INCLUDE
@@ -268,12 +268,7 @@ LIB
  
    All static libraries are compiled using the following compiler options:
  
-      /c /O2 -D_COMPLEX_DEFINED -DMSDOS -DOMIT_BLANK_CC
-      -DNON_ANSI_STDIO
- 
-   One routine, zzsecprt.c, is compiled without the /O2 optimization
-   option, because the MS Visual C++/C compiler is unable to process the
-   routine correctly when using this optimization feature.
+      -c -ansi -m64 -O2 -fPIC -DNON_UNIX_STDIO
  
    The libraries contained in this directory are listed below. Each library
    is discussed in more detail later in the section devoted to the SRC
@@ -285,8 +280,8 @@ LIB
             |
             lib
                |
-               cspice.lib
-               csupport.lib
+               cspice.a
+               csupport.a
  
  
 SRC
@@ -344,7 +339,7 @@ BRIEF
                   brief.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 CHRONOS
@@ -366,7 +361,7 @@ CHRONOS
                   main.x
                   chronos.pgm
                   *.c
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 CKBRIEF
@@ -388,7 +383,7 @@ CKBRIEF
                   main.x
                   ckbrief.pgm
                   *.c
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 COMMNT
@@ -411,7 +406,7 @@ COMMNT
                   main.x
                   commnt.pgm
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 COOKBOOK
@@ -435,7 +430,7 @@ COOKBOOK
                   states.pgm
                   subpt.pgm
                   tictoc.pgm
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 DSKBRIEF
@@ -457,7 +452,7 @@ DSKBRIEF
                   dskbrief.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 DSKEXP
@@ -480,7 +475,7 @@ DSKEXP
                   dskexp.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 FRMDIFF
@@ -504,7 +499,7 @@ FRMDIFF
                   frmdiff.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 INSPEKT
@@ -527,7 +522,7 @@ INSPEKT
                   inspekt.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 MKDSK
@@ -550,7 +545,7 @@ MKDSK
                   mkdsk.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 MKSPK
@@ -573,7 +568,7 @@ MKSPK
                   mkspk.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 MSOPCK
@@ -598,7 +593,7 @@ MSOPCK
                   msopck.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 SPACIT
@@ -623,7 +618,7 @@ SPACIT
                   spacit.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 CSPICE
@@ -643,7 +638,7 @@ CSPICE
                   |
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 SPKDIFF
@@ -667,7 +662,7 @@ SPKDIFF
                   spkdiff.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 SPKMERGE
@@ -690,7 +685,7 @@ SPKMERGE
                   spkmerge.pgm
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 CSUPPORT
@@ -701,8 +696,8 @@ CSUPPORT
    undergo radical changes such as calling sequence changes. They may even
    be deleted. Do not use them!
  
-   This directory contains the CSUPPORT library source files and a batch
-   file to create the object library csupport.a.
+   This directory contains the CSUPPORT library source files and a script
+   to create the object library csupport.a.
  
       (installation directory)
          |
@@ -714,7 +709,7 @@ CSUPPORT
                   |
                   *.c
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 TOBIN
@@ -736,7 +731,7 @@ TOBIN
                   main.x
                   tobin.pgm
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 TOXFR
@@ -758,7 +753,7 @@ TOXFR
                   main.x
                   toxfr.pgm
                   *.h
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 VERSION
@@ -779,7 +774,7 @@ VERSION
                   |
                   main.x
                   version.pgm
-                  mkprodct.bat
+                  mkprodct.csh
  
  
 Using the Toolkit

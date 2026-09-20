@@ -10,7 +10,7 @@ target("cspice")
     end
     if is_plat("mingw", "linux") then 
         set_languages("c99")
-        add_cflags("-Wno-implicit-int")
+        add_cflags("-Wno-implicit-int", "-Wno-implicit-function-declaration")
     end
     -- add_rules("utils.symbols.export_all", {export_filter = function (symbol, opt)
     --     if symbol:endswith("_") or symbol:endswith("_c") then

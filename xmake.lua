@@ -8,7 +8,7 @@ target("cspice")
         add_defines("MSDOS", "USE_CLOCK", "NO_ONEXIT", "NO_My_ctype", "NO_ISATTY")
         add_defines("_COMPLEX_DEFINED", "NON_ANSI_STDIO", "OMIT_BLANK_CC")
     end
-    if is_plat("mingw") then 
+    if is_plat("mingw", "linux") then 
         set_languages("c99")
         add_cflags("-Wno-implicit-int")
     end
